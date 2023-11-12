@@ -1,16 +1,23 @@
-// collection.jsx
-
 import React, { useState, useEffect } from 'react';
 import './collection.css';
 import { getDatabase, ref, onValue } from 'firebase/database';  // Import relevant functions from the Realtime Database
-import { firestore, storage } from '../firebaseConfig'; // Import firestore and storage
 
 function Collection() {
   const [scans, setScans] = useState([]);
+  const [userName, setUserName] = useState('');
 
   useEffect(() => {
-    const scansRef = ref(getDatabase(), '1/scans');
+    const userId = localStorage.getItem('userId');
 
+    // Fetch user's name
+    const userNameRef = ref(getDatabase(), `users/${userId}/name`);
+    onValue(userNameRef, (snapshot) => {
+      const name = snapshot.val();
+      setUserName(name);
+    });
+
+    // Fetch scans
+    const scansRef = ref(getDatabase(), `users/${userId}/scans`);
     const fetchScans = onValue(scansRef, (snapshot) => {
       const scansData = snapshot.val();
 
@@ -21,29 +28,28 @@ function Collection() {
         }));
 
         setScans(scansArray);
+      } else {
+        setScans([]);
       }
     });
 
-    // Cleanup function to unsubscribe from the Firebase listener
     return () => fetchScans();
   }, []);
 
-  // The rest of your code...
-
-
-
   return (
-    <div>
-      <div className="top">
-        Hello, {scans.length > 0 ? scans[0].name : 'Unknown'}. Here are your scans:
-      </div>
+    <div className="maini">
+      <h2>Hello, {userName}</h2> {/* Display user's name */}
       <div className="scans">
-        {scans.map((scan) => (
-          <div key={scan.id} className="scan-item">
-            <h3>{scan.name}</h3>
-            <img src={scan.url} alt={scan.name} />
-          </div>
-        ))}
+        {scans.length > 0 ? (
+          scans.map((scan) => (
+            <div key={scan.id} className="scan-item">
+              <h3>{scan.name}</h3>
+              <img src={scan.url} alt={scan.name} className="scan-image" />
+            </div>
+          ))
+        ) : (
+          <p>No scans, please upload a photo.</p>
+        )}
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ import OpenAI from 'openai';
 // const OpenAI = require("openai");
 
 const openai = new OpenAI({
-  apiKey: "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",
+  apiKey: "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",
   dangerouslyAllowBrowser: true
 });
 
@@ -74,7 +74,12 @@ function Upload() {
         
 
         const db = getDatabase();
-        const scansRef = databaseRef(db, '1/scans');
+        const userId = localStorage.getItem('userId');
+        const scansRef = databaseRef(db, `users/${userId}/scans`);
+
+
+        
+       
         const newScan = { name: chatGPTResponse, url: url };
         await push(scansRef, newScan);
         console.log('Scan added successfully!');
@@ -98,6 +103,9 @@ function Upload() {
       {downloadURL && <img src={downloadURL} alt="Uploaded" style={{ maxWidth: '100%' }} />}
     </div>
     </div>
+
+
+
   );
 }
 

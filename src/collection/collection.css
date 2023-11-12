@@ -1,5 +1,24 @@
+.maini {
+    transform: translateY();
+}
+
+.scan-image {
+    width: 100px; /* Set your desired width */
+    height: 100px; /* Set your desired height */
+    object-fit: cover; /* This ensures the image covers the area without distortion */
+}
 
 .scans {
+    display: grid; /* Using grid layout for better control */
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 columns */
+    grid-gap: 0px; /* No gap between items */
+}
 
-    color: rgb(0, 0, 0);
+.scan-item {
+    padding: 10px;
+    /* Additional properties can be added if necessary */
+}
+
+img {
+    border-radius: 10px;
 }

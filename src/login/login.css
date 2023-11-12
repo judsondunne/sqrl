@@ -82,4 +82,54 @@
   }
   
   /* Add styling for Facebook, Apple, etc., if needed */
+  .screen-title {
+    font-size: 4rem; /* Large font size for the title */
+    color: white; /* Assuming you want a white title to stand out on a presumably dark background */
+    text-align: center; /* Center the title horizontally */
+    margin-top: 20px; /* Add space at the top */
+    margin-bottom: 200px; /* Add space between the title and the rest of the content */
   
+  }
+  
+  .login-container {
+    background-image: url('../assets/bc.png');
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-logo {
+    margin-bottom: 200px;
+    position: relative;
+  }
+  
+  .logo-squirrel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .logo-squirrel {
+    width: 200px; /* Adjust based on your image */
+    height: 200px; /* Adjust based on your image */
+  }
+  
+  .button-create-account, .button-login {
+    background-color: orange;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 30px;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .divider {
+    color: white;
+    margin: 10px;
+  }
