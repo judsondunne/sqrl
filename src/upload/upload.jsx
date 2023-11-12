@@ -7,9 +7,11 @@ import './upload.css';
 import OpenAI from 'openai';
 
 
-const string1 = "sk-KXTXbsmqk3"
-const string2 = "2EccYBfyDoT3BlbkFJ"
-const string3 = "T2dpfjaTKQxxmizN10IR"
+
+
+const string1 = "sk-TicodTiF71MVV"
+const string2 = "1e3c5qHT3BlbkF"
+const string3 = "J1g8WMRC7nWtuW2IdMKpF"
 // const OpenAI = require("openai");
 
 const openai = new OpenAI({
