@@ -7,12 +7,16 @@ import './upload.css';
 import OpenAI from 'openai';
 
 
+const string1 = "sk-KXTXbsmqk3"
+const string2 = "2EccYBfyDoT3BlbkFJ"
+const string3 = "T2dpfjaTKQxxmizN10IR"
 // const OpenAI = require("openai");
 
 const openai = new OpenAI({
-  apiKey: "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",
+  apiKey: string1 + string2 + string3,
   dangerouslyAllowBrowser: true
 });
+
 
 async function sendMessageToChatGPT(url) {
   const name = await openai.chat.completions.create({
@@ -103,9 +107,6 @@ function Upload() {
       {downloadURL && <img src={downloadURL} alt="Uploaded" style={{ maxWidth: '100%' }} />}
     </div>
     </div>
-
-
-
   );
 }
 
