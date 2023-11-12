@@ -1,19 +1,23 @@
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Collection from "./collection/collection";
 import Login from "./login/login";
-import Signup from "./signup/signup";
-
+import Upload from "./upload/upload";
+import AddScan from "./addscan";
 
 
 function App() {
   return (
-    <div className="App">
-      <Signup/>
-      <br />
-      <br />
-      <br />
-      <Login/>
-     
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/upload" element={<Upload/>} />
+          <Route path="/jew" element={<AddScan/>} />
+          {/* Redirect to /collection as the default route */}
+          <Route path="/" element={<Collection />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
